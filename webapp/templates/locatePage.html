@@ -1,7 +1,59 @@
+{% load static %}
 
-{% if chart %}
+<!DOCTYPE html>
+<html>
+  <head>
+  
+    <meta charset="utf-8">
+		
+		<title>Page Title</title>
 
-<img src="data:image/png;base64, {{chart|safe}}">
-{% else %}
-Some problem occured while predicting location.
-{% endif %}
+		<!-- description text that displays below the link in google search results -->
+		<meta name="description" content="Description of site" /> 
+        <link rel="stylesheet" href="{% static 'dist/css/locate.css' %}">
+	</head>
+
+	<body>
+		
+		<section class="page-wrap">
+
+	
+			<header> <!-- Defining the header section of the page with the appropriate tag -->
+				
+				<div>
+					<h1>Your Name</h1>
+					<p>A subhead goes here.</p>
+				</div>
+
+				<nav> <!-- The nav link semantically marks your main site navigation -->
+					<ul>
+						<li><a href="#block1">Nav 1</a></li>
+						<li><a href="#block2">Nav 2</a></li>
+						<li><a href="#block3">Nav 3</a></li>
+					</ul>
+				</nav>
+
+
+			</header>
+
+	  
+			<article id="block1" class="module-block">
+			
+				<h2>2nd Level Heading</h2>
+			
+				<div >
+                    {% if chart %}
+                    
+                    <img src="data:image/png;base64, {{chart|safe}}">
+                    {% else %}
+                    Some problem occured while predicting location.
+                    {% endif %}
+                </div>
+	
+			</article>
+		</section>
+	</body>
+</html>
+
+
+

@@ -22,7 +22,7 @@ def euclideanDist(dict_wknn_value,dict_wknn_coo,dict):
         sqsum = sqsum + pow(rssi-x ,2)
     for mac,avgRssi in dict.items():
         if mac not in inputDict.keys():
-            sqsum = sqsum + pow(avgRssi-x, 2)
+            sqsum = sqsum + pow(avgRssi, 2)
         
     
     return math.sqrt(sqsum)

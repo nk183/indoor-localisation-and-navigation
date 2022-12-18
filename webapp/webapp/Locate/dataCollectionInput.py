@@ -9,8 +9,9 @@ def get_input(rssi):
     with open(filename, 'w')as file:
         ap_info = rssi_scanner.getAPinfo(ssids,sudo=True)
         writer = csv.writer(file)      
-        for rssi in ap_info:
-            writer.writerow([rssi['mac'],rssi['signal']])
+        if ap_info is True:
+            for rssi in ap_info:
+                writer.writerow([rssi['mac'],rssi['signal']])
 
 get_input(rssi)  
     
