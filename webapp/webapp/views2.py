@@ -1,14 +1,20 @@
+import sys
 from django.shortcuts import render
 # from user.models import *
 from .utils import get_plot
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 from matplotlib import style
-from .main_looper import looper
+# from ./main_looper import looper
 import io, base64
 
-style.use('fivethirtyeight')
+def home(request):
+    return render(request,'landingpage.html')
 
+sys.path.insert(1, 'D:\AMISHA\Major Project\major_project\indoor-localisation-and-navigation')
+from main_looper import looper
+
+style.use('fivethirtyeight')
 fig=plt.figure()
 ax1=fig.add_subplot(1,1,1)
 
@@ -30,10 +36,10 @@ def animate(i):
     looper()
     # ax1.plot(2,3)
 
-def home(request):
-    return render(request,'landingpage.html')
+
 
 def locate(request):
+    
     ani = animation.FuncAnimation(fig,animate,interval=1000)
     # plt.show()
     flike = io.BytesIO()

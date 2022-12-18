@@ -1,12 +1,8 @@
-{% extends "base.html" %}
+helloooo
 
-{% block content %}
-ssss
 {% if chart %}
 in iff
 <img src="data:image/png;base64, {{chart|safe}}">
 {% else %}
 Some problem occured while predicting location.
 {% endif %}
-
-{% endblock content %}
