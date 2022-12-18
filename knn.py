@@ -40,12 +40,12 @@ def matching(filenames):
         
         euclideanDist(dict)
 
-def main():
+def apply_knn():
     filenames = ['lib_(1,1).csv','lib_(1,2).csv','lib_(2,1).csv','lib_(2,2).csv']
     inputFilename='input.csv'
     getInput(inputFilename)
     matching(filenames)
     print(dists)
 
-main()
+
     

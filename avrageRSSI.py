@@ -1,6 +1,6 @@
 
 import csv
-
+import os
 dictSum = {}
 dictCount = {}
 avg = {}
@@ -19,7 +19,7 @@ def average():
         avg[mac] = sum/dictCount[mac]
 
 def fun(filename):
-    with open(filename, mode ='r')as file:
+    with open("data/raw/data1/"+filename, mode ='r')as file:
 
         csvFile = csv.reader(file)
         for lines in csvFile:
@@ -28,7 +28,7 @@ def fun(filename):
             
         for i,j in avg.items():
             print(i,j)
-    with open('avg'+filename, 'w')as file:
+    with open('data/avg/avg_'+filename, 'w')as file:
         writer = csv.writer(file)                       
         # fieldnames = ["MAC","Avg RSSI"]
         # writer.writerow(fieldnames)
@@ -37,10 +37,11 @@ def fun(filename):
             writer.writerow([mac,avgRssi])
 
 
-def main():
-    filenames = ['lib_(1,1).csv','lib_(1,2).csv','lib_(2,1).csv','lib_(2,2).csv']
+def avg_rssi():
+    filenames = os.listdir("data/raw/data1")
+    print(filenames)
+    # filenames = ['lib_(1,1).csv','lib_(1,2).csv','lib_(2,1).csv','lib_(2,2).csv']
     for filename in filenames:
         fun(filename)
 
-main()
-    
+# avg_rssi()

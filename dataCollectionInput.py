@@ -1,15 +1,18 @@
 import csv
 import rssi
 
-interface = 'wlo1'
-rssi_scanner = rssi.RSSI_Scan(interface)
-filename = 'input.csv'
-ssids = ['PEC_WIFI']
-with open(filename, 'w')as file:
-    ap_info = rssi_scanner.getAPinfo(ssids,sudo=True)
-    writer = csv.writer(file)      
-    for rssi in ap_info:
-        writer.writerow([rssi['mac'],rssi['signal']])
+def get_input(rssi):
+    interface = 'wlo1'
+    rssi_scanner = rssi.RSSI_Scan(interface)
+    filename = 'input.csv'
+    ssids = ['PEC_WIFI']
+    with open(filename, 'a')as file:
+        ap_info = rssi_scanner.getAPinfo(ssids,sudo=True)
+        writer = csv.writer(file)      
+        for rssi in ap_info:
+            writer.writerow([rssi['mac'],rssi['signal']])
+
+get_input(rssi)  
     
 # print(ap_info)
 
