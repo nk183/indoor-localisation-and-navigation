@@ -1,0 +1,74 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta charset="utf-8">
+
+	<title>Page Title</title>
+
+	<!-- description text that displays below the link in google search results -->
+	<meta name="description" content="Description of site" />
+	<link rel="stylesheet" href="{% static 'dist/css/locate.css' %}">
+</head>
+
+<body>
+
+	<section class="page-wrap">
+
+
+		<header> <!-- Defining the header section of the page with the appropriate tag -->
+
+			<!-- <div> -->
+			<!-- <h1>Your Name</h1>
+				<p>A subhead goes here.</p> -->
+			<!-- </div> -->
+
+
+		</header>
+
+
+		<article id="block1" class="module-block">
+
+			<h2>Your Predicted Location</h2>
+			{% if status %}
+			<a class="button" href="{% url 'calibrate' %}">Calibrate Again</a>
+				
+			{% else %}
+			<div id="showForm">
+				<form action="{% url 'calibrate' %}" method="post">
+					{% csrf_token %}
+					<label for="calibration">Your name: </label>
+					<input id="location" type="text" name="location" value="{{ current_location }}">
+					<input id="x-coordinate" type="text" name="x-coordinate" value="{{ current_x_coordinate }}">
+					<input id="y-coordinate" type="text" name="y-coordinate" value="{{ current_y_coordinate }}">
+					<button type="submit" value="submit" onclick="myFunction()">submit</button>
+				</form>
+			</div>
+			<div style={'display':'none'} id="loadingGif">
+			<img src="https://i.gifer.com/1fqC.gif" alt="Loading...."  width="250" />
+			</div>
+			{% endif %}
+		</article>
+		
+	</section>
+	<script>
+
+		function myFunction() {
+			var form = document.getElementById("showForm");
+			var load = document.getElementById("loadingGif");
+				if (form.style.display === "none") {
+					form.style.display = "block";
+					load.style.display = "none";
+				} 
+				else {
+					form.style.display = "none";
+					load.style.display = "block";
+				}
+			} 
+	</script>
+</body>
+
+</html>

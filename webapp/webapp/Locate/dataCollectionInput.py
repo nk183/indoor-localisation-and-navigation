@@ -13,7 +13,7 @@ def get_input(rssi):
             for rssi in ap_info:
                 writer.writerow([rssi['mac'],rssi['signal']])
 
-get_input(rssi)  
+# get_input(rssi)  
     
 # print(ap_info)
 
