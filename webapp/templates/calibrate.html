@@ -32,42 +32,52 @@
 
 		<article id="block1" class="module-block">
 
-			<h2>Your Predicted Location</h2>
+			<!-- <h2>Input reference point details</h2> -->
 			{% if status %}
+			<h2>Calibrated succesfully</h2>
+			<!-- <br> -->
 			<a class="button" href="{% url 'calibrate' %}">Calibrate Again</a>
-				
+
 			{% else %}
+			<h2>Input reference point details</h2>
 			<div id="showForm">
 				<form action="{% url 'calibrate' %}" method="post">
 					{% csrf_token %}
-					<label for="calibration">Your name: </label>
+					<label for="calibration">Building Name: </label>
 					<input id="location" type="text" name="location" value="{{ current_location }}">
+					<br> <br>
+					<label for="x-coordinate">x-coordinate: </label>
 					<input id="x-coordinate" type="text" name="x-coordinate" value="{{ current_x_coordinate }}">
+					<br> <br>
+					<label for="y-coordinate">y-coordinate: </label>
 					<input id="y-coordinate" type="text" name="y-coordinate" value="{{ current_y_coordinate }}">
+					<br> <br>
 					<button type="submit" value="submit" onclick="myFunction()">submit</button>
+					<br>
 				</form>
 			</div>
-			<div style={'display':'none'} id="loadingGif">
-			<img src="https://i.gifer.com/1fqC.gif" alt="Loading...."  width="250" />
+			<div id="loadingGif">
+				<img id="gif_image" style="display: none;" src="https://i.gifer.com/1fqC.gif" alt="Loading...."
+					width="250" />
 			</div>
 			{% endif %}
 		</article>
-		
+
 	</section>
 	<script>
 
 		function myFunction() {
 			var form = document.getElementById("showForm");
-			var load = document.getElementById("loadingGif");
-				if (form.style.display === "none") {
-					form.style.display = "block";
-					load.style.display = "none";
-				} 
-				else {
-					form.style.display = "none";
-					load.style.display = "block";
-				}
-			} 
+			var load = document.getElementById("gif_image");
+			if (form.style.display === "none") {
+				form.style.display = "block";
+				load.style.display = "none";
+			}
+			else {
+				form.style.display = "none";
+				load.style.display = "block";
+			}
+		} 
 	</script>
 </body>
 

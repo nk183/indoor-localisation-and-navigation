@@ -11,9 +11,9 @@ def calibrate_func(rssi,location,x_coordinate,y_coordinate):
     with open(filename, 'w')as file:
         for i in range (1,5):
             ap_info = rssi_scanner.getAPinfo(ssids,sudo=True)
-            writer = csv.writer(file)      
-            for rssi in ap_info:
-                writer.writerow([rssi['mac'],rssi['signal']])
-            time.sleep(0.6)
-            i=i+1
-        
+            writer = csv.writer(file)   
+            if ap_info is not False:   
+                for rssi in ap_info:
+                    writer.writerow([rssi['mac'],rssi['signal']])
+                time.sleep(0.6)
+                i=i+1
