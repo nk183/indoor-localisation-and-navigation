@@ -21,4 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.home, name="home"),
     path('locate',views.locate, name="locate"),
+    path('calibrate',views.calibration, name="calibrate")
 ]
